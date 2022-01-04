@@ -19,8 +19,11 @@ public class ExcelServiceImp implements ExcelService {
 		excelRepo.save(excel);
 	}
 
+	
+
 	@Override
-	public List<Excel> listaExcelByUtente(int id) {
+	public List<Excel> listFile() {
+		// TODO Auto-generated method stub
 		return excelRepo.findAll();
 	}
 

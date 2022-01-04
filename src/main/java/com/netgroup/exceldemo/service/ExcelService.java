@@ -7,7 +7,7 @@ import com.netgroup.exceldemo.data.Excel;
 public interface ExcelService {
 
 	public void salva(Excel excel);
-	public List<Excel> listaExcelByUtente(int id);
+	public List<Excel> listFile();
 	
 	
 }

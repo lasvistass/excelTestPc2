@@ -117,6 +117,28 @@ return ResponseEntity.status(HttpStatus.OK).header("jwt", jwt)
 		@Getter
 		@Setter
 		private Object response;
+		
+		
+		
+		public JsonResponseBody(int server, Object response) {
+			super();
+			this.server = server;
+			this.response = response;
+		}
+		public int getServer() {
+			return server;
+		}
+		public void setServer(int server) {
+			this.server = server;
+		}
+		public Object getResponse() {
+			return response;
+		}
+		public void setResponse(Object response) {
+			this.response = response;
+		}
+		
+		
 	}
 
 }

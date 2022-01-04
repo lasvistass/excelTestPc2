@@ -42,7 +42,49 @@ public class Excel {
 	
 	@ManyToOne
 	@JoinColumn 
-	@NotBlank @NotEmpty @NotNull
+//	@NotBlank @NotEmpty @NotNull
 	private Utente utente;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNomeProdotto() {
+		return nomeProdotto;
+	}
+
+	public void setNomeProdotto(String nomeProdotto) {
+		this.nomeProdotto = nomeProdotto;
+	}
+
+	public String getCategoriaProdotto() {
+		return categoriaProdotto;
+	}
+
+	public void setCategoriaProdotto(String categoriaProdotto) {
+		this.categoriaProdotto = categoriaProdotto;
+	}
+
+	public double getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+	
+	
 
 }
