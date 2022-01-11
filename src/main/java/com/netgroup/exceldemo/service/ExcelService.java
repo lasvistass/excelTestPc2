@@ -7,7 +7,9 @@ import com.netgroup.exceldemo.data.dao.Excel;
 public interface ExcelService {
 
 	public Excel salva(Excel excel);
+
 	public List<Excel> listFile();
-	
-	
+
+	public List<Excel> arrayToList(Excel[] lista);
+
 }

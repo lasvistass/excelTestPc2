@@ -13,30 +13,57 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
-@Data
-@Table(name = "excel_prodotto")
+@Table
 public class Excel {
 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	
-	@Column(name = "nome_prodotto")
-	@NotBlank
-	@NotEmpty
-	@NotNull
+	@Column
 	private String nomeProdotto;
 
-	@Column(name = "categoria_prodotto")
-	@NotBlank
-	@NotEmpty
-	@NotNull
+	@Column
 	private String categoriaProdotto;
 
-	@Column(name = "prezzo")
-	@NotNull
+	@Column
 	private double prezzo;
 	
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNomeProdotto() {
+		return nomeProdotto;
+	}
+
+	public void setNomeProdotto(String nomeProdotto) {
+		this.nomeProdotto = nomeProdotto;
+	}
+
+	public String getCategoriaProdotto() {
+		return categoriaProdotto;
+	}
+
+	public void setCategoriaProdotto(String categoriaProdotto) {
+		this.categoriaProdotto = categoriaProdotto;
+	}
+
+	public double getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
+
+
 
 }

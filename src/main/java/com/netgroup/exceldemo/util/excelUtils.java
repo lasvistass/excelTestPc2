@@ -1,7 +1,6 @@
 package com.netgroup.exceldemo.util;
 
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -64,41 +63,39 @@ public class excelUtils {
 		font.setFontHeightInPoints((short)(10));
 		row=sheet.createRow(1);
 		font.setBold(true);
-        font.setFontHeight(16);
-        style.setFont(font);
-        createCell(row, 0, "Nome Prodotto", style);
-        createCell(row, 1, "Categoria Prodotto", style);
-        createCell(row, 2, "Prezzo", style);
+  
+	}
+  
+  
+  
+	
+  
+  private void writeDataLines() {
+    int rowCount=2;
+    
+    CellStyle style=workbook.createCellStyle();
+    XSSFFont font=workbook.createFont();
+    font.setFontHeight(14);
+    style.setFont(font);
+    
+    for(Excel excel:listExcel) {
+      Row row=sheet.createRow(rowCount++);
+      int columnCount=0;
+      createCell(row, columnCount++, excel.getNomeProdotto(), style);
+      createCell(row, columnCount++, excel.getCategoriaProdotto(), style);
+      createCell(row, columnCount++, excel.getPrezzo(), style);
 
-        
-	}
-	
-	private void writeDataLines() {
-		int rowCount=2;
-		
-		CellStyle style=workbook.createCellStyle();
-		XSSFFont font=workbook.createFont();
-		font.setFontHeight(14);
-		style.setFont(font);
-		
-		for(Excel excel:listExcel) {
-			Row row=sheet.createRow(rowCount++);
-			int columnCount=0;
-			createCell(row, columnCount++, excel.getNomeProdotto(), style);
-			createCell(row, columnCount++, excel.getCategoriaProdotto(), style);
-			createCell(row, columnCount++, excel.getPrezzo(), style);
-
-		}
-	}
-	
-	public void export(HttpServletResponse response) throws IOException{
-		writeHeaderLine();
-		writeDataLines();
-		
-		ServletOutputStream outputStream=response.getOutputStream();
-		workbook.write(outputStream);
-		workbook.close();
-		outputStream.close();
-	}
-	
+    }
+  }
+  
+  public void export(HttpServletResponse response) throws IOException{
+    writeHeaderLine();
+    writeDataLines();
+ 
+    ServletOutputStream outputStream=response.getOutputStream();
+    workbook.write(outputStream);
+    workbook.close();
+    outputStream.close();
+  }
+  
 }
