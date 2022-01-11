@@ -1,9 +1,10 @@
-package com.netgroup.exceldemo.covert;
+package com.netgroup.exceldemo.exportToExcel;
 
 import java.io.File;
 import java.io.IOException;
+
+
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -26,9 +27,7 @@ public class ConverterExcel {
 		Workbook workbook = WorkbookFactory.create(new File(path));
 		
 		for(Sheet sheet: workbook) {
-			System.out.println("=> " + sheet.getSheetName());
-			
-//			DataFormatter dataFormatter = new DataFormatter();
+
             for (Row row: sheet) {
             	String nome_prodotto = row.getCell(0).getStringCellValue();
             	String categoria_prodotto = row.getCell(1).getStringCellValue();
@@ -43,7 +42,10 @@ public class ConverterExcel {
             }
 		}
 		
+		
 	}
+
+	
 }
 
 

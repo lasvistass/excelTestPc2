@@ -15,41 +15,30 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
-@Data
-@Table(name = "excel_prodotto")
+@Table
 public class Excel {
 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	
-	@Column(name = "nome_prodotto")
-	@NotBlank
-	@NotEmpty
-	@NotNull
+	@Column
 	private String nomeProdotto;
 
-	@Column(name = "categoria_prodotto")
-	@NotBlank
-	@NotEmpty
-	@NotNull
+	@Column
 	private String categoriaProdotto;
 
-	@Column(name = "prezzo")
-	@NotNull
+	@Column
 	private double prezzo;
 	
-	@ManyToOne
-	@JoinColumn 
-//	@NotBlank @NotEmpty @NotNull
-	private Utente utente;
 
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -77,14 +66,7 @@ public class Excel {
 		this.prezzo = prezzo;
 	}
 
-	public Utente getUtente() {
-		return utente;
-	}
 
-	public void setUtente(Utente utente) {
-		this.utente = utente;
-	}
-	
 	
 
 }

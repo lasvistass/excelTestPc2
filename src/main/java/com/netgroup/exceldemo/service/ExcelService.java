@@ -8,6 +8,7 @@ public interface ExcelService {
 
 	public void salva(Excel excel);
 	public List<Excel> listFile();
+	public List<Excel> arrayToList(Excel[] lista);
 	
 	
 }
