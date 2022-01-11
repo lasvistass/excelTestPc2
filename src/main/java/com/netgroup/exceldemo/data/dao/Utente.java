@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.data;
+package com.netgroup.exceldemo.data.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +42,13 @@ public class Utente {
 	@NotEmpty
 	@NotNull
 	private String password;
+	
+	@Column(name = "role")
+	@NotBlank
+	@NotEmpty
+	@NotNull
+	private String role;
+	
 	
 
 	

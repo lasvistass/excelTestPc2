@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netgroup.exceldemo.data.Utente;
+import com.netgroup.exceldemo.data.dao.Utente;
 import com.netgroup.exceldemo.repositrory.UtenteRepository;
 
 @Service

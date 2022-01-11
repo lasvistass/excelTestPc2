@@ -21,9 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netgroup.exceldemo.data.Utente;
+import com.netgroup.exceldemo.data.dao.Utente;
 import com.netgroup.exceldemo.exception.UserNotLoggedException;
-import com.netgroup.exceldemo.service.LoginService;
 import com.netgroup.exceldemo.service.UtenteService;
 import com.netgroup.exceldemo.util.EncryptionUtils;
 
@@ -33,18 +32,18 @@ import lombok.Setter;
 
 @RestController
 @RequestMapping("/api/utenti")
-public class UtenteController {
+public class UtenteRest {
 
 	@Autowired
 	UtenteService uten;
 
 	@Autowired
 	EncryptionUtils encryption;
+//
+//	@Autowired
+//	LoginService loginService;
 
-	@Autowired
-	LoginService loginService;
-
-	private static final Logger log = LoggerFactory.getLogger(UtenteController.class);
+	private static final Logger log = LoggerFactory.getLogger(UtenteRest.class);
 
 	@RequestMapping(value = "/register", method={RequestMethod.OPTIONS,RequestMethod.POST})
 	public boolean addUser(@Valid @RequestBody Utente ute, BindingResult result) {
@@ -68,45 +67,45 @@ public class UtenteController {
 	public List<Utente> listaUtenti() {
 		return uten.lista();
 	}
+//
+//	@RequestMapping(value = "/login", method={RequestMethod.OPTIONS, RequestMethod.POST})
+//	public ResponseEntity<JsonResponseBody> login(@RequestParam(value = "username") String username,
+//			@RequestParam(value = "password") String password) {
+//		log.info(username + " " + password);
+//		try {
+////			Optional<Utente> userr = loginService.getUserFromDbAndVerifyPassword(username, password);
+//			if (userr.isPresent()) {
+////				Utente user = userr.get();
+////				String jwt = loginService.createJwt(user.getUsername(), user.getFirstName(), "user",
+//						new Date());
+//				return ResponseEntity.status(HttpStatus.OK).header("jwt", jwt)
+//						.body(new JsonResponseBody(HttpStatus.OK.value(), "Success! User logged in!"));
+//			}
+//		} catch (UserNotLoggedException e1) {
+//			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new JsonResponseBody(HttpStatus.FORBIDDEN.value(),
+//					"Login failed! Wrong credentials" + e1.toString()));
+//		} catch (UnsupportedEncodingException e2) {
+//			return ResponseEntity.status(HttpStatus.FORBIDDEN)
+//					.body(new JsonResponseBody(HttpStatus.FORBIDDEN.value(), "Token Error" + e2.toString()));
+//		}
+//		return ResponseEntity.status(HttpStatus.FORBIDDEN)
+//				.body(new JsonResponseBody(HttpStatus.FORBIDDEN.value(), "No corrispondence in the database of users"));
+//	}
 
-	@RequestMapping(value = "/login", method={RequestMethod.OPTIONS,RequestMethod.POST})
-	public ResponseEntity<JsonResponseBody> login(@RequestParam(value = "username") String username,
-			@RequestParam(value = "password") String password) {
-		log.info(username + " " + password);
-		try {
-			Optional<Utente> userr = loginService.getUserFromDbAndVerifyPassword(username, password);
-			if (userr.isPresent()) {
-				Utente user = userr.get();
-				String jwt = loginService.createJwt(user.getUsername(), user.getFirstName(), /*user.getPermission()*/"user",
-						new Date());
-				return ResponseEntity.status(HttpStatus.OK).header("jwt", jwt)
-						.body(new JsonResponseBody(HttpStatus.OK.value(), "Success! User logged in!"));
-			}
-		} catch (UserNotLoggedException e1) {
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new JsonResponseBody(HttpStatus.FORBIDDEN.value(),
-					"Login failed! Wrong credentials" + e1.toString()));
-		} catch (UnsupportedEncodingException e2) {
-			return ResponseEntity.status(HttpStatus.FORBIDDEN)
-					.body(new JsonResponseBody(HttpStatus.FORBIDDEN.value(), "Token Error" + e2.toString()));
-		}
-		return ResponseEntity.status(HttpStatus.FORBIDDEN)
-				.body(new JsonResponseBody(HttpStatus.FORBIDDEN.value(), "No corrispondence in the database of users"));
-	}
-
-	@GetMapping(value = "/log")
-	public ResponseEntity<JsonResponseBody> logStandard() {
-		String jwt = null;
-		try {
-			jwt = loginService.createJwt("", "", "user-standard", new Date());
-
-			
-		} catch (UnsupportedEncodingException e) {
-		
-			e.printStackTrace();
-		}
-return ResponseEntity.status(HttpStatus.OK).header("jwt", jwt)
-					.body(new JsonResponseBody(HttpStatus.OK.value(), "Success! User logged in!"));
-	}
+//	@GetMapping(value = "/log")
+//	public ResponseEntity<JsonResponseBody> logStandard() {
+//		String jwt = null;
+//		try {
+////			jwt = loginService.createJwt("", "", "user-standard", new Date());
+//
+//			
+//		} catch (UnsupportedEncodingException e) {
+//		
+//			e.printStackTrace();
+//		}
+//return ResponseEntity.status(HttpStatus.OK).header("jwt", jwt)
+//					.body(new JsonResponseBody(HttpStatus.OK.value(), "Success! User logged in!"));
+//	}
 
 	/*------------------------------*/
 	@AllArgsConstructor

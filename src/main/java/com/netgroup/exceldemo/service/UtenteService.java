@@ -3,7 +3,7 @@ package com.netgroup.exceldemo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.netgroup.exceldemo.data.Utente;
+import com.netgroup.exceldemo.data.dao.Utente;
 
 public interface UtenteService {
 	

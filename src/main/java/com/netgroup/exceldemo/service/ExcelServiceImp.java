@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netgroup.exceldemo.data.Excel;
+import com.netgroup.exceldemo.data.dao.Excel;
 import com.netgroup.exceldemo.repositrory.ExcelRepository;
 
 @Service
@@ -15,13 +15,18 @@ public class ExcelServiceImp implements ExcelService {
 	ExcelRepository excelRepo;
 
 	@Override
-	public void salva(Excel excel) {
-		excelRepo.save(excel);
+	public Excel salva(Excel excel) {
+		return excelRepo.save(excel);
 	}
 
+	
+
 	@Override
-	public List<Excel> listaExcelByUtente(int id) {
+	public List<Excel> listFile() {
+		// TODO Auto-generated method stub
 		return excelRepo.findAll();
 	}
+	
+	
 
 }

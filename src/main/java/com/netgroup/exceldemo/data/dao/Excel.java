@@ -1,12 +1,10 @@
-package com.netgroup.exceldemo.data;
+package com.netgroup.exceldemo.data.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -40,9 +38,5 @@ public class Excel {
 	@NotNull
 	private double prezzo;
 	
-	@ManyToOne
-	@JoinColumn 
-	@NotBlank @NotEmpty @NotNull
-	private Utente utente;
 
 }
