@@ -26,10 +26,10 @@ public class UploadExcel {
 		return "Salvataggio andato a buon fine";
 	}
 	
-	@Scheduled(fixedRate = 5000)
-	@GetMapping(value="/prova")
-	public void prova() {
-		System.out.println("ciao ciao");
-	}
+//	@Scheduled(fixedRate = 5000)
+//	@GetMapping(value="/prova")
+//	public void prova() {
+//		System.out.println("ciao ciao");
+//	}
 
 }

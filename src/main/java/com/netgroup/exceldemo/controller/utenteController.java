@@ -7,14 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.netgroup.exceldemo.data.dao.Utente;
-import com.netgroup.exceldemo.rest.UtenteRest;
 import com.netgroup.exceldemo.service.UtenteService;
-import com.netgroup.exceldemo.util.EncryptionUtils;
 
 @Controller
+@RequestMapping(value = "/login")
 public class utenteController {
 
 //	@Autowired
@@ -23,22 +23,25 @@ public class utenteController {
 	@Autowired
 	UtenteService utenteService;
 	
-	
 	private static final Logger log = LoggerFactory.getLogger(utenteController.class);
 	
 	
 	@GetMapping(value = "/register")
 	public ModelAndView register() {
-		
-		
 		return new ModelAndView("/login/register").addObject("oggettoUtente", new Utente());
 	}
 	
 	@PostMapping(value = "/salvaUtente")
 	public ModelAndView saveArea(@ModelAttribute("oggettoUtente") Utente utente) {
-		log.info(utente.getFirstName());
+		log.info(utente.getPassword());
 		utenteService.salva(utente);
-		return new ModelAndView("redirect:/download/downloadexcel");
+		return new ModelAndView("/login/login");
+	}
+	
+	
+	@PostMapping(value= "/verify")
+	public void verifyUsers(@ModelAttribute("oggettoUtente") Utente utente) {
+		log.info("sono dentro");
 	}
 	
 }

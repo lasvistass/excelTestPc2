@@ -92,9 +92,6 @@ public class Utente {
 	}
 	
 	@Column(name = "role")
-	@NotBlank
-	@NotEmpty
-	@NotNull
 	private String role;
 	
 	

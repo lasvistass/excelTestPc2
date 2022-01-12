@@ -3,7 +3,6 @@ package com.netgroup.exceldemo.exportToExcel;
 import java.io.File;
 import java.io.IOException;
 
-
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -11,8 +10,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.netgroup.exceldemo.data.Excel;
+import com.netgroup.exceldemo.data.dao.Excel;
 import com.netgroup.exceldemo.repositrory.ExcelRepository;
 
 

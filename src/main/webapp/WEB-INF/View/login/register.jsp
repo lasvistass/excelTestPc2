@@ -19,7 +19,7 @@
 
 <body>
 	<div class="container">
-		<spring:url value="/login/register" var="saveURL" />
+		<spring:url value="/login/salvaUtente" var="saveURL" />
 
 		<form:form modelAttribute="oggettoUtente" method="post"
 			action="${saveURL}" cssClass="form">
@@ -52,22 +52,16 @@
 			
 			<div class="form-group">
 				<label>password</label>
-				<form:input path="password" cssClass="form-control"
+				<form:password path="password" cssClass="form-control"
 					id="password" />
 				<form:errors path="password" cssClass="error" />
 			</div>
 			
-			<div class="form-group">
-				<label>role</label>
-				<form:input path="role" cssClass="form-control"
-					id="role" />
-				<form:errors path="role" cssClass="error" />
-			</div>
 			
-			<button type="submit" class="btn btn-primary">Salva</button>
-
-
+			<button type="submit" class="btn btn-primary">registrati</button>
+		
 		</form:form>
+	
 	</div>
 </body>
 
