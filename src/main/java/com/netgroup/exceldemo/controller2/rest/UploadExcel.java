@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.rest;
+package com.netgroup.exceldemo.controller2.rest;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.netgroup.exceldemo.exportToExcel.ConverterExcel;
+import com.netgroup.exceldemo.util.ConverterExcel;
 
 
 @RestController

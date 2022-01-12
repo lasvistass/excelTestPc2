@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.clientScheduleLogin.model;
+package com.netgroup.exceldemo.client.model;
 
 
 public class ResponseToken {

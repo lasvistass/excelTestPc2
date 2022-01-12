@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.repositrory;
+package com.netgroup.exceldemo.repository;
 
 import java.util.Optional;
 

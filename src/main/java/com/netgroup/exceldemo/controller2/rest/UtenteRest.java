@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.rest;
+package com.netgroup.exceldemo.controller2.rest;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netgroup.exceldemo.configuration.EncryptionUtils;
 import com.netgroup.exceldemo.data.dao.Utente;
 import com.netgroup.exceldemo.service.UtenteService;
-import com.netgroup.exceldemo.util.EncryptionUtils;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

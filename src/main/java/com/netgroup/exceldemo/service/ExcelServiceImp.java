@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.netgroup.exceldemo.data.dao.Excel;
-import com.netgroup.exceldemo.repositrory.ExcelRepository;
+import com.netgroup.exceldemo.repository.ExcelRepository;
 
 @Service
 public class ExcelServiceImp implements ExcelService {

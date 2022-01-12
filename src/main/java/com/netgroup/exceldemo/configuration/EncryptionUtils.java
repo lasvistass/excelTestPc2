@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.util;
+package com.netgroup.exceldemo.configuration;
 
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.stereotype.Component;

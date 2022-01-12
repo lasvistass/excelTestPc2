@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 import com.netgroup.exceldemo.data.dao.Excel;
  
 @Component
-public class excelUtils {
+public class ExcelUtils {
  
 	private XSSFWorkbook workbook;
 	private XSSFSheet sheet;
@@ -28,7 +28,7 @@ public class excelUtils {
 	private List<Excel> listExcel;
 	
 	
-	public excelUtils(List<Excel> listExcel) {
+	public ExcelUtils(List<Excel> listExcel) {
 		this.listExcel=listExcel;
 		workbook = new XSSFWorkbook();
 		

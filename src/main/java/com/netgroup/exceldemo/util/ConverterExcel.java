@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.exportToExcel;
+package com.netgroup.exceldemo.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.netgroup.exceldemo.data.dao.Excel;
-import com.netgroup.exceldemo.repositrory.ExcelRepository;
+import com.netgroup.exceldemo.repository.ExcelRepository;
 
 
 @Component

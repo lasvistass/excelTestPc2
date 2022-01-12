@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.clientSchedule;
+package com.netgroup.exceldemo.client.clientSchedule;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.netgroup.exceldemo.data.dao.Excel;
-import com.netgroup.exceldemo.exportToExcel.ConverterExcel;
-import com.netgroup.exceldemo.repositrory.ExcelRepository;
+import com.netgroup.exceldemo.repository.ExcelRepository;
 import com.netgroup.exceldemo.service.ExcelService;
+import com.netgroup.exceldemo.util.ConverterExcel;
 
 @RestController
 @RequestMapping(value = "/api/schedule")

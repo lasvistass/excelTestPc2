@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.netgroup.exceldemo.data.dao.Utente;
-import com.netgroup.exceldemo.repositrory.UtenteRepository;
+import com.netgroup.exceldemo.repository.UtenteRepository;
 
 @Service
 public class UtenteServiceImplement implements UtenteService {

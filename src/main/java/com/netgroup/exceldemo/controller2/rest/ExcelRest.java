@@ -1,5 +1,5 @@
 
-package com.netgroup.exceldemo.rest;
+package com.netgroup.exceldemo.controller2.rest;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.netgroup.exceldemo.data.dao.Excel;
 import com.netgroup.exceldemo.service.ExcelService;
-import com.netgroup.exceldemo.util.excelUtils;
+import com.netgroup.exceldemo.util.ExcelUtils;
 
 @RestController
 @RequestMapping("/api/excel")
@@ -32,7 +32,7 @@ public class ExcelRest {
 
 		response.setHeader(headerKey, headervalue);
 		List<Excel> listExcel = excelService.listFile();
-		excelUtils exp = new excelUtils(listExcel);
+		ExcelUtils exp = new ExcelUtils(listExcel);
 		
 		
 		exp.export(response);
