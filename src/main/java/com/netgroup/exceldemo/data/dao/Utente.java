@@ -1,4 +1,4 @@
-package com.netgroup.exceldemo.data;
+package com.netgroup.exceldemo.data.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -90,6 +90,10 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	@Column(name = "role")
+	private String role;
+	
 	
 
 	

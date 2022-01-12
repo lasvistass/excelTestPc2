@@ -17,10 +17,7 @@ public class EncryptionUtils {
 	 public String encrypt(String data){
 	        return textEncryptor().encrypt(data);
 	    }
-
-	    /*
-	    this method provides a decryption of the String passed in input
-	    */
+	 
 	    public String decrypt(String encriptedData){
 	        return textEncryptor().decrypt(encriptedData);
 	    }

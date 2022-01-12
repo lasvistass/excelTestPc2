@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netgroup.exceldemo.data.Excel;
+import com.netgroup.exceldemo.data.dao.Excel;
 import com.netgroup.exceldemo.service.ExcelService;
 import com.netgroup.exceldemo.util.excelUtils;
 
@@ -19,21 +19,26 @@ import com.netgroup.exceldemo.util.excelUtils;
 @RequestMapping("/api/excel")
 public class ExcelRest {
 
-  @Autowired
-  ExcelService excelService;
-  
-  
-  
-  @GetMapping(value = "/export")
-  public void exportToExcel(HttpServletResponse response) throws IOException {
-    response.setContentType("application/octet-stream");
-    String headerKey = "Content-Disposition";
-    String headervalue = "attachment; filename=Student_info.xlsx";
+	@Autowired
+	ExcelService excelService;
+	
+	
+	
+	@GetMapping(value = "/export")
+	public void exportToExcel(HttpServletResponse response) throws IOException {
+		response.setContentType("application/octet-stream");
+		String headerKey = "Content-Disposition";
+		String headervalue = "attachment; filename=prodotto.xlsx";
 
-    response.setHeader(headerKey, headervalue);
-    List<Excel> listExcel = excelService.listFile();
-    excelUtils exp = new excelUtils(listExcel);
-    exp.export(response);
+		response.setHeader(headerKey, headervalue);
+		List<Excel> listExcel = excelService.listFile();
+		excelUtils exp = new excelUtils(listExcel);
+		
+		
+		exp.export(response);
 
-  }
+	
+	
+	
+}
 }

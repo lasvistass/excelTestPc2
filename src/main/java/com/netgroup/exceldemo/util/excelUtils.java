@@ -1,5 +1,5 @@
-
 package com.netgroup.exceldemo.util;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -17,60 +17,58 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
-import com.netgroup.exceldemo.data.Excel;
+import com.netgroup.exceldemo.data.dao.Excel;
  
 @Component
 public class excelUtils {
  
-  private XSSFWorkbook workbook;
-  private XSSFSheet sheet;
+	private XSSFWorkbook workbook;
+	private XSSFSheet sheet;
+	
+	private List<Excel> listExcel;
+	
+	
+	public excelUtils(List<Excel> listExcel) {
+		this.listExcel=listExcel;
+		workbook = new XSSFWorkbook();
+		
+	}
+	
+	private void createCell(Row row,int columnCount, Object value,CellStyle style) {
+		sheet.autoSizeColumn(columnCount);
+		Cell cell=row.createCell(columnCount);
+		if(value instanceof Long) {
+			cell.setCellValue((Long) value);
+		}else if(value instanceof Integer) {
+			cell.setCellValue((Integer) value);
+		}else if(value instanceof Double) {
+			cell.setCellValue((Double) value);
+		}else {
+			cell.setCellValue((String) value);
+		}
+		cell.setCellStyle(style);
+	}
+	
+	private void writeHeaderLine() {
+		sheet=workbook.createSheet("excel");
+		
+		Row row = sheet.createRow(0);
+		CellStyle style = workbook.createCellStyle();
+		XSSFFont font=workbook.createFont();
+		font.setBold(true);
+		font.setFontHeight(20);
+		style.setFont(font);
+		style.setAlignment(HorizontalAlignment.CENTER);
+		sheet.addMergedRegion(new CellRangeAddress(0,0,0,4));
+		font.setFontHeightInPoints((short)(10));
+		row=sheet.createRow(1);
+		font.setBold(true);
   
-  private List<Excel> listExcel;
+	}
   
   
-  public excelUtils(List<Excel> listExcel) {
-    this.listExcel=listExcel;
-    workbook = new XSSFWorkbook();
-    
-  }
   
-  private void createCell(Row row,int columnCount, Object value,CellStyle style) {
-    sheet.autoSizeColumn(columnCount);
-    Cell cell=row.createCell(columnCount);
-    if(value instanceof Long) {
-      cell.setCellValue((Long) value);
-    }else if(value instanceof Integer) {
-      cell.setCellValue((Integer) value);
-    }else if(value instanceof Double) {
-      cell.setCellValue((Double) value);
-    }else {
-      cell.setCellValue((String) value);
-    }
-    cell.setCellStyle(style);
-  }
-  
-  private void writeHeaderLine() {
-    sheet=workbook.createSheet("excel");
-    
-    Row row = sheet.createRow(0);
-    CellStyle style = workbook.createCellStyle();
-    XSSFFont font=workbook.createFont();
-    font.setBold(true);
-    font.setFontHeight(20);
-    style.setFont(font);
-    style.setAlignment(HorizontalAlignment.CENTER);
-    sheet.addMergedRegion(new CellRangeAddress(0,0,0,4));
-    font.setFontHeightInPoints((short)(10));
-    row=sheet.createRow(1);
-    font.setBold(true);
-        font.setFontHeight(16);
-        style.setFont(font);
-        createCell(row, 0, "Nome Prodotto", style);
-        createCell(row, 1, "Categoria Prodotto", style);
-        createCell(row, 2, "Prezzo", style);
-
-        
-  }
+	
   
   private void writeDataLines() {
     int rowCount=2;
@@ -93,7 +91,7 @@ public class excelUtils {
   public void export(HttpServletResponse response) throws IOException{
     writeHeaderLine();
     writeDataLines();
-    
+ 
     ServletOutputStream outputStream=response.getOutputStream();
     workbook.write(outputStream);
     workbook.close();

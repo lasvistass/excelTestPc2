@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netgroup.exceldemo.data.Excel;
+import com.netgroup.exceldemo.data.dao.Excel;
 import com.netgroup.exceldemo.repositrory.ExcelRepository;
 
 @Service
@@ -16,23 +16,19 @@ public class ExcelServiceImp implements ExcelService {
 	ExcelRepository excelRepo;
 
 	@Override
-	public void salva(Excel excel) {
-		excelRepo.save(excel);
+	public Excel salva(Excel excel) {
+		return excelRepo.save(excel);
 	}
-
-	
 
 	@Override
 	public List<Excel> listFile() {
 		return excelRepo.findAll();
 	}
 
-
-
 	@Override
 	public List<Excel> arrayToList(Excel[] lista) {
 		List<Excel> excelList = Arrays.asList(lista);
-		for(int i = 0; i < excelList.size(); i++) {
+		for (int i = 0; i < excelList.size(); i++) {
 			excelRepo.save(excelList.get(i));
 		}
 		return excelList;
