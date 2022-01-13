@@ -2,8 +2,10 @@ package com.netgroup.exceldemo.controller2.controllerJsp;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
+import com.netgroup.exceldemo.repository.ExcelRepository;
 import com.netgroup.exceldemo.util.ConverterExcel;
+import com.netgroup.exceldemo.data.*;
+import com.netgroup.exceldemo.data.dao.Excel;
 
 
 @Controller
@@ -20,6 +26,9 @@ public class ControllerEsempio {
 	
 	@Autowired
 	ConverterExcel converterExcel;
+	
+	@Autowired
+	ExcelRepository excelRepository;
 
 //	@GetMapping("/index")
 //	public String hello() {
@@ -42,7 +51,16 @@ public class ControllerEsempio {
 	
 	@PostMapping("/upload/excel")
 	public ResponseEntity<?> handleFileUploadExcel(@RequestParam("file") MultipartFile mFile) throws IllegalStateException, IOException{
-		converterExcel.Excel2Data(mFile.getInputStream());
-		return ResponseEntity.ok("salvataggio riuscito");
+		try{
+			converterExcel.Excel2Data(mFile.getInputStream());
+			return ResponseEntity.ok("salvataggio riuscito");
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
+	
+
+	
+	
 }
