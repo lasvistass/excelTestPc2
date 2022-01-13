@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +29,8 @@ public class Excel {
 	private String nomeProdotto;
 
 	@Column
-	private String categoriaProdotto;
+	@Enumerated(EnumType.STRING)
+	private CategoriaProdotto categoriaProdotto;
 
 	@Column
 	private double prezzo;
@@ -62,11 +65,13 @@ public class Excel {
 		this.nomeProdotto = nomeProdotto;
 	}
 
-	public String getCategoriaProdotto() {
+	
+
+	public CategoriaProdotto getCategoriaProdotto() {
 		return categoriaProdotto;
 	}
 
-	public void setCategoriaProdotto(String categoriaProdotto) {
+	public void setCategoriaProdotto(CategoriaProdotto categoriaProdotto) {
 		this.categoriaProdotto = categoriaProdotto;
 	}
 
