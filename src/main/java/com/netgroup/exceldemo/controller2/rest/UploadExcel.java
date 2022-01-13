@@ -1,5 +1,7 @@
 package com.netgroup.exceldemo.controller2.rest;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -22,7 +24,7 @@ public class UploadExcel {
 	
 	@GetMapping(value="/excel")
 	public String saveExcel() throws InvalidFormatException, EncryptedDocumentException, IOException {
-		converterExcel.Excel2Data("C:\\Users\\simon\\OneDrive\\Desktop\\esempio\\esempio.xlsx");
+		converterExcel.Excel2Data(new FileInputStream(new File("C:\\Users\\simon\\OneDrive\\Desktop\\esempio\\esempio.xlsx")));
 		return "Salvataggio andato a buon fine";
 	}
 	

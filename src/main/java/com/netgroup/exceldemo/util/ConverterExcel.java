@@ -2,6 +2,7 @@ package com.netgroup.exceldemo.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Row;
@@ -22,9 +23,9 @@ public class ConverterExcel {
 	@Autowired
 	ExcelRepository excelRepository;
 
-	public void Excel2Data(String path) throws EncryptedDocumentException, InvalidFormatException, IOException{
+	public void Excel2Data(InputStream iStream) throws EncryptedDocumentException, InvalidFormatException, IOException{
 
-		Workbook workbook = WorkbookFactory.create(new File(path));
+		Workbook workbook = WorkbookFactory.create(iStream);
 		
 		for(Sheet sheet: workbook) {
 

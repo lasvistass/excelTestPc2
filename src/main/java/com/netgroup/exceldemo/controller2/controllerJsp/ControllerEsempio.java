@@ -42,10 +42,7 @@ public class ControllerEsempio {
 	
 	@PostMapping("/upload/excel")
 	public ResponseEntity<?> handleFileUploadExcel(@RequestParam("file") MultipartFile mFile) throws IllegalStateException, IOException{
-		String fileName = mFile.getOriginalFilename();
-		
-		mFile.transferTo(new File("C:\\Users\\simon\\OneDrive\\Desktop\\esempio\\" + fileName));
-		converterExcel.Excel2Data("C:\\Users\\simon\\OneDrive\\Desktop\\esempio\\" + fileName);
+		converterExcel.Excel2Data(mFile.getInputStream());
 		return ResponseEntity.ok("salvataggio riuscito");
 	}
 }
