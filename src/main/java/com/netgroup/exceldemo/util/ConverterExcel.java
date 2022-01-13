@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.netgroup.exceldemo.data.dao.CategoriaProdotto;
 import com.netgroup.exceldemo.data.dao.Excel;
 import com.netgroup.exceldemo.repository.ExcelRepository;
 
@@ -36,7 +37,8 @@ public class ConverterExcel {
             	
             	Excel excel = new Excel();
             	excel.setNomeProdotto(nome_prodotto);
-            	excel.setCategoriaProdotto(categoria_prodotto);
+            	CategoriaProdotto categoriaProdotto = CategoriaProdotto.valueOf(categoria_prodotto);
+            	excel.setCategoriaProdotto(categoriaProdotto);
             	excel.setPrezzo(prezzo);
             	
             	excelRepository.save(excel);
