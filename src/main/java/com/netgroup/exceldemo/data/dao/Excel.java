@@ -1,5 +1,7 @@
 package com.netgroup.exceldemo.data.dao;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +32,19 @@ public class Excel {
 	@Column
 	private double prezzo;
 	
+	@Column
+	private LocalDate localdate;
+	
+	
 
+	
+	public LocalDate getLocaldate() {
+		return localdate;
+	}
+
+	public void setLocaldate(LocalDate localdate) {
+		this.localdate = localdate;
+	}
 
 	public Integer getId() {
 		return id;
