@@ -36,7 +36,9 @@
 				}); 
 
 		  	if (response.status == 200) {
-		    alert("File successfully uploaded.");
+		    alert("File caricato con successo.");
+		 	 }else{
+		 		 alert("  ** ATTENTZIONE ** Caricamento del file non andato a buon fine.")
 		 	 }
 		}
 	</script>
