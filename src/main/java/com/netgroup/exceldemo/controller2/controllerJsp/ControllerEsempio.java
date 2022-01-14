@@ -65,8 +65,13 @@ public class ControllerEsempio {
 	@PostMapping("/upload/excel")
 	public ResponseEntity<?> handleFileUploadExcel(@RequestParam("file") MultipartFile mFile) throws IllegalStateException, IOException{
 		try{
-			converterExcel.Excel2Data(mFile.getInputStream());
-			return ResponseEntity.ok("salvataggio riuscito");
+			boolean check = converterExcel.Excel2Data(mFile.getInputStream());
+			if (check) {
+				return ResponseEntity.ok("salvataggio riuscito");
+			}else {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
