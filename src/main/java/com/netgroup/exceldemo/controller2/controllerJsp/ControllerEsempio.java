@@ -20,6 +20,8 @@ import com.netgroup.exceldemo.util.ConverterExcel;
 import com.netgroup.exceldemo.data.*;
 import com.netgroup.exceldemo.data.dao.Excel;
 
+import io.swagger.models.Model;
+
 
 @Controller
 public class ControllerEsempio {
@@ -35,6 +37,17 @@ public class ControllerEsempio {
 //		return "uploader";
 //	}
 	
+	@GetMapping("index/home")
+	public ModelAndView home() {
+		ModelAndView modelandview = new ModelAndView("Home/Home");
+		return modelandview;
+	}
+	
+	@GetMapping("index/login")
+	public ModelAndView login() {
+		ModelAndView modelAndView = new ModelAndView("login/logindue");
+		return modelAndView;
+	}
 	
 	@GetMapping("/index/jsp")
 	public ModelAndView index() {
