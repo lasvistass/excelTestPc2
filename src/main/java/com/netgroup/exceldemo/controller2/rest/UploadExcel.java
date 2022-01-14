@@ -39,7 +39,7 @@ public class UploadExcel {
 		return excelRepository.findAll();
 	}
 	
-//	@Scheduled(fixedRate = 5000)
+//	@Scheduled(fixedRate = 1000)
 //	@GetMapping(value="/prova")
 //	public void prova() {
 //		System.out.println("ciao ciao");

@@ -31,9 +31,9 @@ public class ControllerSchedule {
 	@Autowired
 	ExcelService excelService;
 	
-	public static String urlM = "https://8df0-151-73-239-129.ngrok.io/api/home/dto";
+	public static String urlM = "http://localhost:8080/upload/all";
 
-	public static String urlF = "http://82ca-94-34-9-215.ngrok.io/api/home/list";
+	public static String urlF = "http://localhost:8080/upload/all";
 	
 	@Scheduled(cron = "0 0 * * * *")
 	@GetMapping(value = "/entity/dto")
