@@ -38,7 +38,9 @@
 				});
 
 				if (response.status == 200) {
-					alert("File successfully uploaded.");
+					alert("Il file è stato caricato con successo.");
+				}else{
+					alert(" ** ATTENZIONE ** Il file non è corretto.")
 				}
 			}
 		 

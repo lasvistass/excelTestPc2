@@ -31,7 +31,12 @@ public class ConverterExcel {
 	@Autowired
 	ExcelRepository excelRepository;
 
-	public void Excel2Data(InputStream iStream) throws EncryptedDocumentException, InvalidFormatException, IOException{
+	public boolean Excel2Data(InputStream iStream) throws EncryptedDocumentException, InvalidFormatException, IOException{
+
+		 boolean check1 = false;
+		 boolean check2 = false;
+		 boolean check3 = false;
+		 boolean checkFinal = false;
 
 try {
 			
@@ -47,47 +52,68 @@ try {
 				int columnIndex = c.getColumnIndex();
 				switch (columnIndex) {
 				case 0:
-					System.out.println(c.getStringCellValue());
+					String nomeProdotto = "Nome Prodotto";
+					String cNomeProdotto = c.getStringCellValue();
+					String lowerNomeProdotto = nomeProdotto.toLowerCase();
+					String lowerCNomeProdotto = cNomeProdotto.toLowerCase();
+					if(lowerNomeProdotto.equals(lowerCNomeProdotto)) {
+						check1 = true;
+					}
 					break;
 				case 1:
-					System.out.println(c.getStringCellValue());
+					String categoria = "Categoria";
+					String cCategoria = c.getStringCellValue();
+					String lowerCategoria = categoria.toLowerCase();
+					String lowerCCategoria= cCategoria.toLowerCase();
+					if (lowerCategoria.equals(lowerCCategoria)) {
+						check2 = true;
+					}
 					break;
 				case 2:
-					System.out.println(c.getStringCellValue());
+					String prezzo = "Prezzo";
+					String cPrezzo = c.getStringCellValue();
+					String lowerPrezzo = prezzo.toLowerCase();
+					String lowerCPrezzo = cPrezzo.toLowerCase();
+					if(lowerPrezzo.equals(lowerCPrezzo)) {
+						check3 = true;
+					}
 					break;
 				}
 			}
 
-			
-			
-			while(rowIterator.hasNext()) {
-				Excel excel = new Excel();
-				Row nextRow = rowIterator.next();
-				Iterator<Cell> cellIterator = nextRow.cellIterator();
-				while(cellIterator.hasNext()) {
-				
-					Cell nextCell = cellIterator.next();
-					int columnIndex = nextCell.getColumnIndex();
-					switch (columnIndex) {
-					case 0:
-						excel.setNomeProdotto(nextCell.getStringCellValue());
-						break;
-					case 1:
-						excel.setCategoriaProdotto(CategoriaProdotto.valueOf(nextCell.getStringCellValue()));
-						break;
-					case 2:
-						excel.setPrezzo(nextCell.getNumericCellValue());
-						break;
-						
+		
+			if ( check1 && check2 && check3) {
+				while(rowIterator.hasNext()) {
+					Excel excel = new Excel();
+					Row nextRow = rowIterator.next();
+					Iterator<Cell> cellIterator = nextRow.cellIterator();
+					while(cellIterator.hasNext()) {
 					
+						Cell nextCell = cellIterator.next();
+						int columnIndex = nextCell.getColumnIndex();
+						switch (columnIndex) {
+						case 0:
+							excel.setNomeProdotto(nextCell.getStringCellValue());
+							break;
+						case 1:
+							excel.setCategoriaProdotto(CategoriaProdotto.valueOf(nextCell.getStringCellValue()));
+							break;
+						case 2:
+							excel.setPrezzo(nextCell.getNumericCellValue());
+							break;
+							
+						
+						}
+	
+	
 					}
-
-
+						LocalDate ld = LocalDate.now();
+						excel.setLocaldate(ld);
+						excelRepository.save(excel);
+					
+	
+	
 				}
-				LocalDate ld = LocalDate.now();
-				excel.setLocaldate(ld);
-				excelRepository.save(excel);
-
 			}
 			
 			workbook.close();
@@ -97,6 +123,11 @@ try {
 			
 			e.printStackTrace();
 		}
+		
+		if ( check1 && check2 && check3) {
+			checkFinal = true;
+		}
+		return checkFinal;
 		
 
 		}
