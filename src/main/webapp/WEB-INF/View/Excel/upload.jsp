@@ -25,6 +25,24 @@
 				<button type="submit" class="btn btn-success" id="uploadButton"
 					onclick="uploadFileExcel()">UPLOAD Excel</button>
 			</div>
+			
+		<script>
+			
+		  async function uploadFileExcel() {
+				let formData = new FormData();
+				formData.append("file", fileupload.files[0]);
+				let response = await
+				fetch('/upload/excel', {
+					method : "POST",
+					body : formData
+				});
+
+				if (response.status == 200) {
+					alert("File successfully uploaded.");
+				}
+			}
+		 
+	   </script>
 
 			<br>
 
@@ -74,22 +92,8 @@
 							</tbody>
 						</table>
 
-						<script>
-							async
-							function uploadFileExcel() {
-								let formData = new FormData();
-								formData.append("file", fileupload.files[0]);
-								let response = await
-								fetch('/upload/excel', {
-									method : "POST",
-									body : formData
-								});
 
-								if (response.status == 200) {
-									alert("File successfully uploaded.");
-								}
-							}
-						</script>
+					   
 					</div>
 				</div>
 			</div>
