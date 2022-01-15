@@ -17,6 +17,12 @@
 		<div class="ml-3">
 			<h2 class="text-center text-info">Upload Excel</h2>
 			<br> <br>
+				<c:forEach items="${list}" var="list">
+					<tr>
+						<td>${list}</td> 
+
+					</tr>
+				</c:forEach>
 
 		<form method="POST" enctype="multipart/form-data" action="/upload/excel">
 			<table>
@@ -24,7 +30,12 @@
 				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
 			</table>
 		</form>
+			
+		<script>
+			
 
+		 
+	   </script>
 
 			<br>
 

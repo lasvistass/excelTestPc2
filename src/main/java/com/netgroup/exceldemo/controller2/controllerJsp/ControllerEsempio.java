@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.netgroup.exceldemo.repository.ExcelRepository;
 import com.netgroup.exceldemo.util.ConverterExcel;
-import com.netgroup.exceldemo.data.*;
-import com.netgroup.exceldemo.data.dao.Excel;
 
-import io.swagger.models.Model;
 
 
 @Controller
@@ -63,22 +59,16 @@ public class ControllerEsempio {
 	}
 	
 	@PostMapping("/upload/excel")
-	public ResponseEntity<?> handleFileUploadExcel(@RequestParam("file") MultipartFile mFile) throws IllegalStateException, IOException{
-		try{
-			boolean check = converterExcel.Excel2Data(mFile.getInputStream());
-			if (check) {
-				return ResponseEntity.ok("salvataggio riuscito");
-			}else {
-				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-			}
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-	}
-	
+	public ModelAndView handleFileUploadExcel(@RequestParam("file") MultipartFile mFile) throws IllegalStateException, IOException{
+		
+			List<String> list = converterExcel.Excel2Data(mFile.getInputStream());
+			ModelAndView model = new ModelAndView("/Excel/upload");
+			model.addObject("list", list);
+			return model;
 
+
+	
+	}
 	
 	
 }
