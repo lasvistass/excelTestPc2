@@ -35,9 +35,9 @@ public class ConverterExcel {
 		boolean check2 = false;
 		boolean check3 = false;
 
-		boolean check4 = false;
-		boolean check5 = false;
-		boolean check6 = false;
+		boolean check4 = true;
+		boolean check5 = true;
+		boolean check6 = true;
 
 		List<Excel> listaExcel = new ArrayList<>();
 		List<String> error = new ArrayList<>();
@@ -111,11 +111,11 @@ public class ConverterExcel {
 								try {
 									String nomeProdotto = nextCell.getStringCellValue();
 									excel.setNomeProdotto(nomeProdotto);
-									check4 = true;
 									break;
 								} catch (Exception e) {
 									String x = String.valueOf(nextRow.getRowNum());
 									error.add("Errore Nome-Prodotto a riga " + x);
+									check4 = false;
 									break;
 								}
 
@@ -124,22 +124,22 @@ public class ConverterExcel {
 									String categoria = nextCell.getStringCellValue();
 									String catogoriaUP = categoria.toUpperCase();
 									excel.setCategoriaProdotto(CategoriaProdotto.valueOf(catogoriaUP));
-									check5 = true;
 									break;
 								} catch (Exception e) {
 									String x = String.valueOf(nextRow.getRowNum());
 									error.add("Errore Categoria a riga " + x);
+									check5 = false;
 									break;
 								}
 
 							case 2:
 								try {
 									excel.setPrezzo(nextCell.getNumericCellValue());
-									check6 = true;
 									break;
 								} catch (Exception e) {
 									String x = String.valueOf(nextRow.getRowNum());
-									error.add("Errore Prezzo " + x);
+									error.add("Errore Prezzo  a riga " + x);
+									check5 = false;
 									break;
 								}
 
@@ -159,10 +159,7 @@ public class ConverterExcel {
 						}
 
 					}
-				} else {
-					String x = "DOCUMENTO ERRATO - CARICAMENTO FALLITO";
-					error.add(x);
-				}
+				} 
 			} catch (Exception e) {
 				error.add("compilare bene");
 			}
@@ -175,7 +172,7 @@ public class ConverterExcel {
 		}
 		
 		
-		if (check1 && check2 && check3 && check4 && check5 && check6 && righe == listaExcel.size()) {
+		if (righe == listaExcel.size()) {
 			for (int i = 0; i < listaExcel.size(); i++) {
 				excelRepository.save(listaExcel.get(i));
 			}
