@@ -26,7 +26,7 @@ import com.netgroup.exceldemo.service.ExcelService;
 
 
 @Service
-public class ClientService{
+public class ServiceTemplate{
 
 	@Autowired
 	RestTemplate restTemplate;

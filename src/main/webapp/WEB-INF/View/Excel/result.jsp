@@ -19,21 +19,38 @@
 			<br> <br>
 				<c:forEach items="${list}" var="list">
 					<tr>
-						<td>${list}</td> 
-
+						<td>${list}</td>
+	
 					</tr>
 				</c:forEach>
 
-		<form method="POST" enctype="multipart/form-data" action="/upload/excel">
-			<table>
-				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-			</table>
-		</form>
+			<div class="margin-top">
+				<input class="btn btn-info" id="fileupload" type="file"
+					name="fileupload"> <br> <br>
+
+				<button type="submit" class="btn btn-success" id="uploadButton"
+					onclick="uploadFileExcel()">UPLOAD Excel</button>
+			</div>
+
 			
 		<script>
 			
+		  async function uploadFileExcel() {
+				let formData = new FormData();
+				formData.append("file", fileupload.files[0]);
+				let response = await
+				fetch('/upload/excel', {
+					method : "POST",
+					body : formData
+				});
 
+
+				if (response.status == 200) {
+					alert("Il file è stato caricato con successo.");
+				}else{
+					alert(" ** ATTENZIONE ** Il file non è corretto.")
+				}
+			}
 		 
 	   </script>
 
