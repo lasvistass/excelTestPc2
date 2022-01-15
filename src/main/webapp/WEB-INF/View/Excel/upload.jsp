@@ -18,13 +18,12 @@
 			<h2 class="text-center text-info">Upload Excel</h2>
 			<br> <br>
 
-			<div class="margin-top">
-				<input class="btn btn-info" id="fileupload" type="file"
-					name="fileupload"> <br> <br>
-
-				<button type="submit" class="btn btn-success" id="uploadButton"
-					onclick="uploadFileExcel()">UPLOAD Excel</button>
-			</div>
+		<form method="POST" enctype="multipart/form-data" action="/upload/excel">
+			<table>
+				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+			</table>
+		</form>
 			
 		<script>
 			
