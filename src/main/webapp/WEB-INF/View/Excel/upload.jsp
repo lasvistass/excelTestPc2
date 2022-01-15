@@ -24,26 +24,7 @@
 				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
 			</table>
 		</form>
-			
-		<script>
-			
-		  async function uploadFileExcel() {
-				let formData = new FormData();
-				formData.append("file", fileupload.files[0]);
-				let response = await
-				fetch('/upload/excel', {
-					method : "POST",
-					body : formData
-				});
 
-				if (response.status == 200) {
-					alert("Il file è stato caricato con successo.");
-				}else{
-					alert(" ** ATTENZIONE ** Il file non è corretto.")
-				}
-			}
-		 
-	   </script>
 
 			<br>
 
