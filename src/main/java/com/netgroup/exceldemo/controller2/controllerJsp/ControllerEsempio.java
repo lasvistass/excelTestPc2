@@ -67,7 +67,7 @@ public class ControllerEsempio {
 		try{
 			boolean check = converterExcel.Excel2Data(mFile.getInputStream());
 			if (check) {
-				return ResponseEntity.ok("salvataggio riuscito");
+				return  ResponseEntity.ok("salvataggio riuscito");
 			}else {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
