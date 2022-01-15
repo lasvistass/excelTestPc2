@@ -17,6 +17,12 @@
 		<div class="ml-3">
 			<h2 class="text-center text-info">Upload Excel</h2>
 			<br> <br>
+				<c:forEach items="${list}" var="list">
+					<tr>
+						<td>${list}</td>
+
+					</tr>
+				</c:forEach>
 
 		<form method="POST" enctype="multipart/form-data" action="/upload/excel">
 			<table>
@@ -27,21 +33,7 @@
 			
 		<script>
 			
-		  async function uploadFileExcel() {
-				let formData = new FormData();
-				formData.append("file", fileupload.files[0]);
-				let response = await
-				fetch('/upload/excel', {
-					method : "POST",
-					body : formData
-				});
 
-				if (response.status == 200) {
-					alert("Il file è stato caricato con successo.");
-				}else{
-					alert(" ** ATTENZIONE ** Il file non è corretto.")
-				}
-			}
 		 
 	   </script>
 

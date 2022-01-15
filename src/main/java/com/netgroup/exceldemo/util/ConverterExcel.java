@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -31,12 +33,18 @@ public class ConverterExcel {
 	@Autowired
 	ExcelRepository excelRepository;
 
-	public boolean Excel2Data(InputStream iStream) throws EncryptedDocumentException, InvalidFormatException, IOException{
+	public List<String> Excel2Data(InputStream iStream) throws EncryptedDocumentException, InvalidFormatException, IOException{
 
 		 boolean check1 = false;
 		 boolean check2 = false;
 		 boolean check3 = false;
 		 boolean checkFinal = false;
+		 List<String> safe = new ArrayList<>();
+		 String ok = "ok";
+		 safe.add(ok);
+		 List<String> error = new ArrayList<>();
+		 String wrong = "errore";
+		 error.add(wrong);
 
 try {
 			
@@ -125,9 +133,10 @@ try {
 		}
 		
 		if ( check1 && check2 && check3) {
-			checkFinal = true;
+			return  safe;
+		}else {
+			return error;
 		}
-		return checkFinal;
 		
 
 		}
