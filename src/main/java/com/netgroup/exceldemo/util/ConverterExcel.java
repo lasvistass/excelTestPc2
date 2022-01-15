@@ -38,6 +38,10 @@ public class ConverterExcel {
 		 boolean check1 = false;
 		 boolean check2 = false;
 		 boolean check3 = false;
+		 
+		 boolean check4 = false;
+		 boolean check5 = false;
+		 boolean check6 = false;
 		 boolean checkFinal = false;
 		 List<String> safe = new ArrayList<>();
 		 String ok = "ok";
@@ -101,12 +105,25 @@ try {
 						int columnIndex = nextCell.getColumnIndex();
 						switch (columnIndex) {
 						case 0:
-							excel.setNomeProdotto(nextCell.getStringCellValue());
+							String nomeProdotto = nextCell.getStringCellValue();
+							if( nomeProdotto instanceof String && nomeProdotto != null) {
+								check4 = true;
+							}
+							excel.setNomeProdotto(nomeProdotto);
 							break;
 						case 1:
-							excel.setCategoriaProdotto(CategoriaProdotto.valueOf(nextCell.getStringCellValue()));
+							String categoria = nextCell.getStringCellValue();
+							String catogoriaUP = categoria.toUpperCase();
+							if(catogoriaUP instanceof String && catogoriaUP != null) {
+								check5 = true;
+							}
+							excel.setCategoriaProdotto(CategoriaProdotto.valueOf(catogoriaUP));
 							break;
 						case 2:
+							double prezzo = nextCell.getNumericCellValue();
+							if( prezzo > -1 ) {
+								check6 = true;
+							}
 							excel.setPrezzo(nextCell.getNumericCellValue());
 							break;
 							
@@ -115,9 +132,12 @@ try {
 	
 	
 					}
+					if(check4 && check5 && check6) {
 						LocalDate ld = LocalDate.now();
 						excel.setLocaldate(ld);
 						excelRepository.save(excel);
+					}
+
 					
 	
 	
@@ -132,10 +152,12 @@ try {
 			e.printStackTrace();
 		}
 		
+
 		if ( check1 && check2 && check3) {
 			return  safe;
 		}else {
 			return error;
+
 		}
 		
 

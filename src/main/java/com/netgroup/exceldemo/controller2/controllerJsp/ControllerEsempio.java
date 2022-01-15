@@ -70,6 +70,7 @@ public class ControllerEsempio {
 			model.addObject("list", list);
 			return model;
 
+
 	
 	}
 	
