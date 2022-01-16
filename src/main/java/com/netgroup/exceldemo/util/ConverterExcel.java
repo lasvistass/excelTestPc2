@@ -13,6 +13,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.xmlbeans.impl.jam.mutable.MField;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Component;
@@ -199,7 +200,8 @@ public class ConverterExcel {
 			for (int i = 0; i < listaExcel.size(); i++) {
 				excelRepository.save(listaExcel.get(i));
 			}
-			error.add("Salvataggio andato a buon fine");
+			String x = " salvato correttamente";
+			error.add(x);
 			return error;
 		} else {
 			error.add("ATTENZIONE COMPILAZIONE EXCEL NON CORRETTA - CARICAMENTO FALLITO");
