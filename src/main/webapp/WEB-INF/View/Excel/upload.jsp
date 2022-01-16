@@ -16,13 +16,18 @@
 	<div align="center" class="mt-5 bg">
 		<div class="ml-3">
 			<h2 class="text-center text-info">Upload Excel</h2>
+			<h6 class="text-center text-info"> ( Max file size 10 MB )</h6>
 			<br> <br>
 
 
 		<form method="POST" enctype="multipart/form-data" action="/upload/excel">
 			<table>
-				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+				<tr><td><input type="file" name="file" /></td></tr>
+				<tr> <td> <td></tr>
+				<tr> <td> <td></tr>
+				<tr> <td> <td></tr>
+				<tr> <td> <td></tr>
+				<tr><td><input type="submit" value="Upload" /></td></tr>
 			</table>
 		</form>
 			<br> <br>
