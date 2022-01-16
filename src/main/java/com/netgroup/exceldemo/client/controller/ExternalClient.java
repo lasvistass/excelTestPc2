@@ -43,21 +43,44 @@ public class ExternalClient {
 	@Scheduled(cron = "0 0 * * * *")
 	@GetMapping(value = "/entity/dto")
 	public List<Excel> getToDataDTO(){
-		ResponseEntity<Excel[]> response = restTemplate.getForEntity(urlM, Excel[].class);
-		Excel[] excel = response.getBody();
-		return excelService.arrayToList(excel);
+		try {
+			ResponseEntity<Excel[]> response = restTemplate.getForEntity(urlM, Excel[].class);
+			Excel[] excel = response.getBody();
+			return excelService.arrayToList(excel);
+		}catch(Exception e) {
+			System.out.println("##################################################");
+			System.out.println("             Servizio esterno off                 ");
+			System.out.println("##################################################");
+			return null;
+		}
+
 	}
 	@Scheduled(cron = "0 0 * * * *")
 	@GetMapping(value = "/entity")
 	public List<Excel> getToData() {
-		ResponseEntity<Excel[]> response = restTemplate.getForEntity(urlF, Excel[].class);
-		Excel[] excel = response.getBody();
-		return excelService.arrayToList(excel);
+		try {
+			ResponseEntity<Excel[]> response = restTemplate.getForEntity(urlF, Excel[].class);
+			Excel[] excel = response.getBody();
+			return excelService.arrayToList(excel);
+		}catch(Exception e) {
+			System.out.println("##################################################");
+			System.out.println("             Servizio esterno off                 ");
+			System.out.println("##################################################");
+			return null;
+		}
+
 	}
 	@Scheduled(cron = "0 0 * * * *")
 	@RequestMapping(value = "/getResponse", method = RequestMethod.GET)
-	public List<Excel> getToDataJWT() throws JsonProcessingException{
-		return Arrays.asList(clientService.getResponse());
+	public List<Excel> getToDataJWT(){
+		try {
+			return Arrays.asList(clientService.getResponse());
+		}catch(Exception e) {
+			System.out.println("##################################################");
+			System.out.println("             Servizio esterno off                 ");
+			System.out.println("##################################################");
+			return null;
+		}
 	}
 
 	
