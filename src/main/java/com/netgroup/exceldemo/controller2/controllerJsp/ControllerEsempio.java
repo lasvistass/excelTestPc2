@@ -64,6 +64,14 @@ public class ControllerEsempio {
 	@PostMapping("/upload/excel")
 	public ModelAndView handleFileUploadExcel(@RequestParam("file") MultipartFile mFile) throws FileSizeLimitExceededException {
 		try {
+			String filename = mFile.getOriginalFilename();
+			if(filename.equals("")){
+				List<String> list0 = new ArrayList<>();
+				list0.add("*** NESSUN FILE SELEZIONATO *** - SELEZIONARE FORMATO EXCEL ( .xls )");
+				ModelAndView model = new ModelAndView("/Excel/upload");
+				model.addObject("list", list0);
+				return model;
+			}
 			List<String> list = converterExcel.Excel2Data(mFile.getInputStream());
 			ModelAndView model = new ModelAndView("/Excel/upload");
 			model.addObject("list", list);

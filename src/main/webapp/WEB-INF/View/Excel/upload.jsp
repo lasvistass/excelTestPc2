@@ -16,35 +16,20 @@
 	<div align="center" class="mt-5 bg">
 		<div class="ml-3">
 			<h2 class="text-center text-info">Upload Excel</h2>
-			<h6 class="text-center text-info"> ( Max file size 10 MB )</h6>
 			<br> <br>
 
 
 		<form method="POST" enctype="multipart/form-data" action="/upload/excel">
 			
+			
 			<div class="margin-top">
 			
-				<input  class="btn btn-info"  type="file" name="file" /> <br> <br>
+				<input class="btn btn-info" type="file" name="file" /><br> <br>
 				
-				<button class="btn btn-success" type="submit" value="Upload Excel"  >Upload Excel</button>
-
-				
-				
-							
-		
-			
-		$('input[type=file]').change(function(){
-		    if($('input[type=file]').val()==''){
-		        $('button').attr('disabled',true)
-		    } 
-		    else{
-		      $('button').attr('disabled',false);
-		    }
-		})
-		 
-	
+				<input class="btn btn-success" type="submit" value="Upload Excel" />
 				
 			</div>
+			
 		</form>
 			<br> <br>
 
@@ -55,7 +40,12 @@
 
 					</tr>
 				</c:forEach>
+			
+		<script>
+			
 
+		 
+	   </script>
 
 			<br>
 
