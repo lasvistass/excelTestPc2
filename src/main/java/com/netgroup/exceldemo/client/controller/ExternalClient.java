@@ -40,21 +40,21 @@ public class ExternalClient {
 
 	public static String urlF = "http://localhost:8080/excel/free";
 
-	
+	@Scheduled(cron = "0 0 * * * *")
 	@GetMapping(value = "/entity/dto")
 	public List<Excel> getToDataDTO(){
 		ResponseEntity<Excel[]> response = restTemplate.getForEntity(urlM, Excel[].class);
 		Excel[] excel = response.getBody();
 		return excelService.arrayToList(excel);
 	}
-
+	@Scheduled(cron = "0 0 * * * *")
 	@GetMapping(value = "/entity")
 	public List<Excel> getToData() {
 		ResponseEntity<Excel[]> response = restTemplate.getForEntity(urlF, Excel[].class);
 		Excel[] excel = response.getBody();
 		return excelService.arrayToList(excel);
 	}
-	
+	@Scheduled(cron = "0 0 * * * *")
 	@RequestMapping(value = "/getResponse", method = RequestMethod.GET)
 	public List<Excel> getToDataJWT() throws JsonProcessingException{
 		return Arrays.asList(clientService.getResponse());
