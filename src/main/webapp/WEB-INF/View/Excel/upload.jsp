@@ -16,6 +16,7 @@
 	<div align="center" class="mt-5 bg">
 		<div class="ml-3">
 			<h2 class="text-center text-info">Upload Excel</h2>
+			<h6 class="text-center text-info">( Max file size 10 MB )</h6>
 			<br> <br>
 
 
@@ -36,7 +37,7 @@
 		
 				<c:forEach items="${list}" var="list" style="height:100px">
 					<tr>
-						<font color="#ff0000"> <td>${list} </td></font>
+						<font color="black" face="font_family"> <td>${list} </td></font>
 
 					</tr>
 				</c:forEach>
