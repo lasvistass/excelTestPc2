@@ -195,6 +195,10 @@ public class ConverterExcel {
 			e.printStackTrace();
 		}
 		
+		if(righe < 1) {
+			error.add("EXCEL VUOTO - COMPILARE I CAMPI");
+			return error;
+		}
 		
 		if (righe == listaExcel.size()) {
 			for (int i = 0; i < listaExcel.size(); i++) {
@@ -203,6 +207,7 @@ public class ConverterExcel {
 			String x = " salvato correttamente";
 			error.add(x);
 			return error;
+			
 		} else {
 			error.add("ATTENZIONE COMPILAZIONE EXCEL NON CORRETTA - CARICAMENTO FALLITO");
 			return error;
