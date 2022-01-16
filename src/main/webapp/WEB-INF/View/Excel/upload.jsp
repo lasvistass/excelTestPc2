@@ -21,14 +21,30 @@
 
 
 		<form method="POST" enctype="multipart/form-data" action="/upload/excel">
-			<table>
-				<tr><td><input type="file" name="file" /></td></tr>
-				<tr> <td> <td></tr>
-				<tr> <td> <td></tr>
-				<tr> <td> <td></tr>
-				<tr> <td> <td></tr>
-				<tr><td><input type="submit" value="Upload" /></td></tr>
-			</table>
+			
+			<div class="margin-top">
+			
+				<input  class="btn btn-info"  type="file" name="file" /> <br> <br>
+				
+				<button class="btn btn-success" type="submit" value="Upload Excel"  >Upload Excel</button>
+
+				
+				
+							
+		
+			
+		$('input[type=file]').change(function(){
+		    if($('input[type=file]').val()==''){
+		        $('button').attr('disabled',true)
+		    } 
+		    else{
+		      $('button').attr('disabled',false);
+		    }
+		})
+		 
+	
+				
+			</div>
 		</form>
 			<br> <br>
 
@@ -39,12 +55,7 @@
 
 					</tr>
 				</c:forEach>
-			
-		<script>
-			
 
-		 
-	   </script>
 
 			<br>
 
