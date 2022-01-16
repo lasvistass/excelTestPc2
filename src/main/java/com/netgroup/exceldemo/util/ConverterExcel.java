@@ -57,42 +57,65 @@ public class ConverterExcel {
 				int columnIndex = c.getColumnIndex();
 				switch (columnIndex) {
 				case 0:
-					String nomeProdotto = "Nome Prodotto";
-					String cNomeProdotto = c.getStringCellValue();
-					String lowerNomeProdotto = nomeProdotto.toLowerCase();
-					String lowerCNomeProdotto = cNomeProdotto.toLowerCase();
-					if (lowerNomeProdotto.equals(lowerCNomeProdotto)) {
-						check1 = true;
-					} else {
-						String errProdotto = "Colonna Nome-Prodotto assente";
+					try {
+						String nomeProdotto = "Nome Prodotto";
+						String cNomeProdotto = c.getStringCellValue();
+						String lowerNomeProdotto = nomeProdotto.toLowerCase();
+						String lowerCNomeProdotto = cNomeProdotto.toLowerCase();
+						if (lowerNomeProdotto.equals(lowerCNomeProdotto)) {
+							check1 = true;
+						}else {
+							String errProdotto = "*** COLONNA ' Nome Prodotto ' ASSENTE ***";
+							error.add(errProdotto);
+						}
+						break;
+					}catch(Exception e) {
+						String errProdotto = "*** COLONNA ' Nome Prodotto ' ASSENTE ***";
 						error.add(errProdotto);
+						break;
+					}
 
-					}
-					break;
 				case 1:
-					String categoria = "Categoria";
-					String cCategoria = c.getStringCellValue();
-					String lowerCategoria = categoria.toLowerCase();
-					String lowerCCategoria = cCategoria.toLowerCase();
-					if (lowerCategoria.equals(lowerCCategoria)) {
-						check2 = true;
-					} else {
-						String errCategoria = "Colonna Categoria assente ( consultare la lista delle categorie )";
+					try {
+						String categoria = "Categoria";
+						String cCategoria = c.getStringCellValue();
+						String lowerCategoria = categoria.toLowerCase();
+						String lowerCCategoria = cCategoria.toLowerCase();
+						if (lowerCategoria.equals(lowerCCategoria)) {
+							check2 = true;
+						} else {
+							String errCategoria = "*** COLONNA ' Categoria ' ASSENTE ( Consultare la lista delle categorie ) ***";
+							error.add(errCategoria);
+						}
+						break;
+						
+					}catch(Exception e) {
+						String errCategoria = "*** COLONNA ' Categoria ' ASSENTE ( Consultare la lista delle categorie ) ***";
 						error.add(errCategoria);
+						break;
 					}
-					break;
+
 				case 2:
-					String prezzo = "Prezzo";
-					String cPrezzo = c.getStringCellValue();
-					String lowerPrezzo = prezzo.toLowerCase();
-					String lowerCPrezzo = cPrezzo.toLowerCase();
-					if (lowerPrezzo.equals(lowerCPrezzo)) {
-						check3 = true;
-					} else {
-						String errPrezzo = "Colonna Prezzo assente";
+					try {
+						String prezzo = "Prezzo";
+						String cPrezzo = c.getStringCellValue();
+						String lowerPrezzo = prezzo.toLowerCase();
+						String lowerCPrezzo = cPrezzo.toLowerCase();
+						if (lowerPrezzo.equals(lowerCPrezzo)) {
+							check3 = true;
+						} else {
+							String errPrezzo = "*** COLONNA ' Prezzo ' ASSENTE ***";
+							error.add(errPrezzo);
+						}
+						break;
+						
+					}catch(Exception e) {
+						String errPrezzo = "*** COLONNA ' Prezzo ' ASSENTE ***";
 						error.add(errPrezzo);
+						break;
+						
 					}
-					break;
+
 				}
 			}
 
@@ -114,7 +137,7 @@ public class ConverterExcel {
 									break;
 								} catch (Exception e) {
 									String x = String.valueOf(nextRow.getRowNum());
-									error.add("Errore Nome-Prodotto a riga " + x);
+									error.add("*** Errore Nome-Prodotto a riga " + x + " ***  ");
 									check4 = false;
 									break;
 								}
@@ -127,7 +150,7 @@ public class ConverterExcel {
 									break;
 								} catch (Exception e) {
 									String x = String.valueOf(nextRow.getRowNum());
-									error.add("Errore Categoria a riga " + x);
+									error.add("*** Errore Categoria a riga " + x + " ***  ");
 									check5 = false;
 									break;
 								}
@@ -138,7 +161,7 @@ public class ConverterExcel {
 									break;
 								} catch (Exception e) {
 									String x = String.valueOf(nextRow.getRowNum());
-									error.add("Errore Prezzo  a riga " + x);
+									error.add("*** Errore Prezzo  a riga " + x + " ***  ");
 									check5 = false;
 									break;
 								}
@@ -179,7 +202,7 @@ public class ConverterExcel {
 			error.add("Salvataggio andato a buon fine");
 			return error;
 		} else {
-			error.add("ATTENZIONE FILE NON CORRETTO - CARICAMENTO FALLITO");
+			error.add("ATTENZIONE COMPILAZIONE EXCEL NON CORRETTA - CARICAMENTO FALLITO");
 			return error;
 
 		}
